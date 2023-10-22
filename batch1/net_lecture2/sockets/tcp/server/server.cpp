@@ -32,8 +32,6 @@ int main() {
     return -1;
   }
 
-  sleep(10);
-  
   sockaddr_in serverAddr;
   serverAddr.sin_family = AF_INET;
   serverAddr.sin_port = htons(3030);
@@ -44,14 +42,10 @@ int main() {
     return -1;
   }
 
-  sleep(10);
-
   if (listen(serverSocket, 1) == -1) {
     cerr << "Error listening" << endl;
     return -1;
   }
-
-  sleep(10);
 
   cout << "Server is listening at port 3030" << endl; 
 
@@ -66,10 +60,8 @@ int main() {
 
     int numbers[2];
     recv(clientSocket, numbers, sizeof(numbers), 0);
-    sleep(2);
     int sum = numbers[0] + numbers[1];
     send(clientSocket, &sum, sizeof(sum), 0);
-    sleep(2);
 
     close(clientSocket);
   }
